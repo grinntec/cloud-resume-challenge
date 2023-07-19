@@ -15,6 +15,10 @@ Here are the variables that need to be set before executing the script:
 
 The script first sets up the required Azure resources, which include a Resource Group and a Storage Account. It then enables static website hosting on the Storage Account and uploads the website files to the `$web` container. Once the files are uploaded, the script fetches the primary endpoint for the static website and opens it in your default browser.
 
+## Web content
+
+This repository includes a `web-content` folder with three files; `index.html`, `script.js` and `style.css`. You can use these files as your web content or replace them with your own.
+
 ## How to use
 
 1. Install the [Azure PowerShell module](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps) if it's not already installed.
