@@ -23,7 +23,7 @@ The script first sets up the required Azure resources, which include a Resource 
 
 3. Set the variables mentioned above.
 
-4. Run the script using the command `.\script_name.ps1`, replacing `script_name` with the actual name of your script file.
+4. Run the script using the command `.\script.ps1`
 
 Please note that you must have the appropriate permissions to create and manage resources in your Azure subscription. Also, the script assumes that you're using the 'Standard_RAGRS' redundancy option for the Storage Account, and that all HTML, CSS, and JS files in your local directory should be uploaded to the Storage Account. Make sure to modify these options as needed to suit your use case.
 
@@ -32,14 +32,5 @@ Please note that you must have the appropriate permissions to create and manage 
 The script will output the primary endpoint for the static website, which is the URL where your website is hosted. You can share this URL with others to allow them to access your website.
 
 If any part of the script fails, the script will stop execution and display a message indicating which part failed.
-
-## Further Improvements
-
-This script is quite basic and may not suit all use cases. Here are some improvements you might want to consider:
-
-- Implement error checking for each command to ensure that it completed successfully.
-- Modify the script to suit your coding and infrastructure standards.
-- Parameterize the script to make it reusable for different applications or environments.
-- Incorporate the script into your CI/CD pipeline for automated deployments.
 
 Please remember that this script may incur costs on your Azure subscription, depending on the resources that you create and use. Always monitor your usage and costs to avoid unexpected charges.
