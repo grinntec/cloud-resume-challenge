@@ -1,4 +1,4 @@
-# Azure Static Website Deployment Script
+# Azure Static Website Deployment PowerShell Script
 
 This script is used to deploy a static website to Azure using PowerShell. 
 
