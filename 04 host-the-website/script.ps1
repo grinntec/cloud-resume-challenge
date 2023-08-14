@@ -5,7 +5,7 @@ $location = ""  # Example: "West US"
 $pathToFiles = ""  # Example: "C:\Users\Username\Documents\Website"
 
 # Automated values based on variables
-$resourceGroupName = $appId + "-rg" # Creating a name for the resource group
+$resourceGroupName = "rg-" + $appId # Creating a name for the resource group
 $storageAccountNamePrefix = $appId # Creating a prefix for the storage account name
 
 # Function to generate a random string
