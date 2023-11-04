@@ -1,5 +1,5 @@
 azure_subscription_id = "c714dba2-7aff-402d-ab05-7e2d57532a86"
-app_name              = "test03"
+app_name              = "test02"
 environment           = "dev"
 location              = "westeurope"
 enable_lock           = false
