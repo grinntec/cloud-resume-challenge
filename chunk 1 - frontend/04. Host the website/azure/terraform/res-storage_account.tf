@@ -18,13 +18,15 @@ resource "azurerm_storage_account" "this" {
   is_hns_enabled                   = false
   nfsv3_enabled                    = false
 
+  #static_website {
   dynamic "static_website" {
     for_each = var.create_static_website ? [1] : []
     content {
       index_document     = "index.html"
-      error_404_document = "error.html"
+      error_404_document = "error.html" // Optional: Specify a custom error document (e.g., "error.html")
     }
   }
+  #}
 
   queue_properties {
     logging {
