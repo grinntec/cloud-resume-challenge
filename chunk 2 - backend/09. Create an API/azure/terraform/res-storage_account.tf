@@ -1,12 +1,9 @@
-############################################################
-# RESOURCES
-############################################################
 # create an azure storage account
 // https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account.html
 resource "azurerm_storage_account" "this" {
-  name                             = "${lower(random_string.this.result)}${lower(var.environment)}"
+  name                             = "${lower(var.environment)}${lower(random_string.this.result)}"
   resource_group_name              = azurerm_resource_group.this.name
-  location                         = var.location
+  location                         = azurerm_resource_group.this.location
   account_kind                     = var.account_kind
   account_tier                     = var.account_tier
   account_replication_type         = var.account_replication_type
@@ -16,17 +13,16 @@ resource "azurerm_storage_account" "this" {
   min_tls_version                  = "TLS1_2"
   allow_nested_items_to_be_public  = false
   shared_access_key_enabled        = true
-  public_network_access_enabled    = true
+  public_network_access_enabled    = false
   default_to_oauth_authentication  = false
   is_hns_enabled                   = false
   nfsv3_enabled                    = false
 
-  // configure a static website if set via input variable var.create_static_website
   dynamic "static_website" {
     for_each = var.create_static_website ? [1] : []
     content {
       index_document     = "index.html"
-      error_404_document = "error.html" // Optional: Specify a custom error document (e.g., "error.html")
+      error_404_document = "error.html"
     }
   }
 
@@ -53,11 +49,10 @@ resource "azurerm_storage_account" "this" {
     versioning_enabled            = true
   }
 
+  tags = merge(local.common_tags, local.date_tags)
   lifecycle {
     ignore_changes = [tags["created_date"]]
   }
-
-  tags = merge(local.common_tags, local.date_tags)
 }
 
 ############################################################
@@ -127,7 +122,7 @@ variable "account_replication_type" {
 variable "access_tier" {
   type        = string
   description = <<-EOT
-  (Required) Defines the access tier to use for this account.
+  (Required) Defines the access tier to use for this account for BlobStorage, FileStorage, and StorageV2.
 
   Options:
   - Hot
@@ -144,7 +139,7 @@ variable "access_tier" {
 
 variable "create_private_endpoint" {
   type        = bool
-  description = "Create a private endpoint for the storage account."
+  description = "Set to true to create a private endpoint for the storage account."
   default     = false
 }
 
@@ -170,16 +165,4 @@ variable "create_static_website" {
   type        = bool
   description = "Choose to create a static website or not"
   default     = false
-}
-
-############################################################
-# OUTPUTS
-############################################################
-output "storage_account_name" {
-  description = "The name of the storage account"
-  value       = azurerm_storage_account.this.name
-}
-
-output "primary_web_endpoint" {
-  value = azurerm_storage_account.this.primary_web_endpoint
 }

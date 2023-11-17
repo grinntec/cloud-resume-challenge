@@ -19,3 +19,16 @@ output "storage_account_name" {
 output "primary_web_endpoint" {
   value = azurerm_storage_account.this.primary_web_endpoint
 }
+
+# Output for CDN Endpoint
+output "cdn_endpoint_name" {
+  value = azurerm_cdn_endpoint.this.name
+}
+
+output "cdn_endpoint_fqdn" {
+  value = azurerm_cdn_endpoint.this.fqdn
+}
+
+output "cdn_endpoint_origin" {
+  value = azurerm_cdn_endpoint.this.origin
+}
