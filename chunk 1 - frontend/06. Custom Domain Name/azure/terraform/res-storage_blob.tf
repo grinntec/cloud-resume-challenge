@@ -38,4 +38,5 @@ resource "azurerm_storage_blob" "files" {
 variable "content_directory" {
   type        = string
   description = "The path to the directory with the website content"
+  default     = ""
 }
