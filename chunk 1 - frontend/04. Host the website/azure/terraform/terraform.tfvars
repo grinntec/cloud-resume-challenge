@@ -16,4 +16,6 @@ vnet_resource_group      = ""           // (Optional) If creating a private endp
 vnet_name                = ""           // (Optional) If creating a private endpoint. Name of the VNet.
 subnet_name              = ""           // (Optional) If creating a private endpoint. Name of the subnet where the endpoint will be set.
 create_static_website    = true         // (Required) Enable static website hosting on the storage account. Options are 'true' or 'false'
+
+# Storage Blob
 content_directory        = "../website" // (Optional) If using a static website. The path to the directory with the website content.

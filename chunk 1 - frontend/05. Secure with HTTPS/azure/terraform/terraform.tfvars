@@ -1,6 +1,6 @@
 # Universal
 app_name    = "cloudresumechallenge" // (Required) Must be between 1 and 90 characters, start with a letter, and end with a letter or number.
-environment = "dev"                  // (Required) Describe the environment type. Options are 'dev', 'test', or 'prod'.
+environment = "prod"                  // (Required) Describe the environment type. Options are 'dev', 'test', or 'prod'.
 location    = "westeurope"           // (Required) Location of where the workload will be managed. Options are 'westeurope', 'eastus', or 'southeastasia'
 
 # Resource Group
@@ -16,4 +16,11 @@ vnet_resource_group      = ""           // (Optional) If creating a private endp
 vnet_name                = ""           // (Optional) If creating a private endpoint. Name of the VNet.
 subnet_name              = ""           // (Optional) If creating a private endpoint. Name of the subnet where the endpoint will be set.
 create_static_website    = true         // (Required) Enable static website hosting on the storage account. Options are 'true' or 'false'
+
+# Storage Blob
 content_directory        = "../website" // (Optional) If using a static website. The path to the directory with the website content.
+
+# Azure DNS
+dns_cname_record        = "azure-resume" // (Required) The name of the DNS CNAME Record. For example, enter 'foo' if your CNAME record is for 'foo.domain.net'.
+dns_zone_name           = "grinntec.net" // (Required) Specifies the DNS Zone where the resource exists. For example, enter 'domain.net'.
+dns_zone_resource_group = "dns-zone-rg"  // (Required) Specifies the resource group where the DNS Zone exists.
